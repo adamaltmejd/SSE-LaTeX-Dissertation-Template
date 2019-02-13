@@ -1,0 +1,166 @@
+% !TEX root = ./dissertation.tex
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+% !TEX spellcheck = en-US
+% !BIB TS-program = = biber
+
+% DRAFT
+\documentclass[twoside,11pt,american,openright,final]{memoir}
+% Documentclass options:
+% "draft" for draft mode (quicker build)
+% "showtrims" to show trimmed sides before printing
+\usepackage{SSEThesisPreamble}
+
+
+
+\title{Dissertation Title}
+\newcommand\thesubtitle{Dissertation Subtitle}
+\author{My~Name} % Use ~ instead of space to prevent line breaking
+
+% Load the layout
+\usepackage{SSEThesisLayout}
+
+% All included chapters need to have their graphics paths specified manually here
+% this is for input to work and to find the right figures
+% Graphics paths for all documents
+\graphicspath{{./chapters/chapter1/figures/}{./chapters/chapter2/figures/}}
+\makeatletter
+\providecommand*{\input@path}{}
+\g@addto@macro\input@path{{./chapters/chapter1/figures/}{./chapters/chapter2/figures/}}%
+\makeatother
+
+% Bibliographies (can be multiple files)
+\addbibresource{chapters/bibliography.bib}
+
+\begin{document}
+\frontmatter
+\thispagestyle{empty}
+
+%%%%%%%%%%%%%%%%
+% TITLE PAGE (right side)
+\vspace*{4\onelineskip}
+\begin{center}
+{\Huge\sffamily\thetitle}\par\vspace*{2\onelineskip}
+{\Large\sffamily\thesubtitle}\par\vspace*{2\onelineskip}
+{\Large\sffamily\theauthor}\par
+\end{center}
+
+\vfill
+
+\begin{center}
+\includegraphics[width=2.88cm]{logo_black.pdf}
+\end{center}
+
+\pagebreak
+
+%%%%%%%%%%%%%%%%
+% Copyright page (on left side)
+\thispagestyle{empty}
+\begin{flushleft}
+\begin{tabularx}{\textwidth}[t]{m{1.93cm}X}
+\includegraphics[width=1.93cm]{logo_black} &
+\begin{tabular}{@{}l@{}}
+	Dissertation for the Degree of Doctor of Philosophy, Ph.D.,\\
+	in Economics\\
+	Stockholm School of Economics, 2018\\
+\end{tabular}\\
+\end{tabularx}
+\vfill
+\thetitle\par
+\textcopyright~SSE and \theauthor, 2018\par\bigskip
+ISBN 978-91-7731-086-0 (printed)\par
+ISBN 978-91-7731-087-7 (pdf)\par\bigskip
+This book was typeset by the author using \LaTeX.\par\bigskip
+\emph{Front cover photo}: \textcopyright~Photographer~Name\par\bigskip
+\emph{Back cover photo}: ARCTISTIC/Photo:~Photographer~Name\par\bigskip
+\emph{Printed by}: BrandFactory, Gothenburg, 2018\par\bigskip
+\emph{Keywords:} keywords.
+\end{flushleft}
+
+% Dedication
+\cleardoublepage
+\vspace*{45mm}
+\begin{center}
+\textit{To me}
+\end{center}
+
+\cleardoublepage
+%%%%%%%%%%%%%%%%%%
+% Foreword
+\chapter*{Foreword}\thispagestyle{empty}
+This volume is the result of a research project carried out at the Department of Economics at the Stockholm School of Economics (SSE).
+
+This volume is submitted as a doctoral thesis at SSE. In keeping with the policies of SSE, the author has been entirely free to conduct and present his research in the manner of his choosing as an expression of his own ideas.
+
+SSE is grateful for the financial support provided by the Jan Wallander and Tom Hedelius Foundation which has made it possible to carry out the project.
+
+\vspace{2\onelineskip}
+
+\begin{tabular}{cc}
+\emph{Göran Lindqvist} & \emph{Tore Ellingsen}\\
+& \\
+Director of Research & Professor and Head of the\\
+Stockholm School of Economics & Department of Economics\\
+& Stockholm School of Economics
+\end{tabular}
+\cleardoublepage
+
+%%%%%%%%%%%%%%%%%%
+% Acknowledgements
+\chapter*{Acknowledgements}\thispagestyle{empty}
+\input{chapters/acknowledgements}\par\bigskip
+\begin{center}
+\emph{Stockholm, September 10, 2018}\par\smallskip
+\emph{\theauthor}
+\end{center}
+\cleardoublepage
+
+%%%%%%%%%%%%%%%%%%%
+% Table of contents
+\tableofcontents* % star for no TOC in TOC
+\cleardoublepage
+\mainmatter % change numbering to arabic
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% INTRODUCTION
+\begin{refsection}
+\chapter*{Introduction}\addcontentsline{toc}{chapter}{Introduction}\markboth{Introduction}{}
+\input{chapters/introduction}
+\clearpage
+\nobibintoc\SSEprintbibliography{subbibliography}\bibintoc
+\end{refsection}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CHAPTER 1
+\begin{refsection}
+\chapter{Title of Chapter 1}
+{\large\centering\theauthor\par\vspace*{2\onelineskip}} % Author
+\begin{abstract}\input{chapters/chapter1/abstract}\end{abstract}%
+\blindfootnote{Who am I grateful to?}%
+\include{chapters/chapter1/mainmatter} % include puts clearpages around automatically
+\begin{subappendices}
+	% "fake" new chapter to get the unnumbered chapter style for appendix (also does a cleardoublepage)
+	\SSEfakechapter{1.A}{Appendix}%
+	\input{chapters/chapter1/appendix} % need to use input to not clearpage
+	\SSEfakechapter{1.B}{References}\SSEprintbibliography{none}
+\end{subappendices}
+\end{refsection}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CHAPTER 2
+\begin{refsection}
+	\chapter{Title of Chapter 2}
+	{\large\centering\theauthor\par\vspace*{2\onelineskip}} % Author
+	\begin{abstract}\input{chapters/chapter2/abstract}\end{abstract}%
+	\blindfootnote{Who am I grateful to?}%
+	\include{chapters/chapter2/mainmatter} % include puts clearpages around automatically
+	\begin{subappendices}
+		% "fake" new chapter to get the unnumbered chapter style for appendix (also does a cleardoublepage)
+		\SSEfakechapter{1.A}{Appendix}%
+		\input{chapters/chapter2/appendix} % need to use input to not clearpage
+		\SSEfakechapter{1.B}{References}\SSEprintbibliography{none}
+	\end{subappendices}
+	\end{refsection}
+
+\end{document}
+

@@ -1,0 +1,43 @@
+\section{Introduction}
+
+	\lipsum[2-5]
+
+	The dog in Figure~\ref{fig:dog} is really happy (\cite{Altmejd2017_pre_analysis}).
+
+	\begin{figure}[htbp]\centering
+		\caption{A cool dog\label{fig:dog}}
+		\includegraphics[width=0.8\textwidth]{dcc}
+	\end{figure}
+
+\section{Results}
+
+	\lipsum[6-10]
+
+	% The regression table below uses the SIUNIT package to format it nicely. Its a bit tricky to get this working well with automatic
+	% Stata exports but well worth it!
+	% The threeparttable is used to get a table notes at the end while still having a caption at the top.
+	\begin{table}[htbp]\centering
+		\caption{A Regression Table\label{tab:results}}
+		\sisetup{
+			table-format = 1.3,
+			table-space-text-pre ={(},
+			table-space-text-post={\textsuperscript{***}}
+		}
+		\begin{threeparttable}
+			{\input{choice_main}}
+			\begin{tablenotes}[para,flushleft]\footnotesize%
+				\item \emph{Notes:} Here are some notes about the regression results.
+			\end{tablenotes}
+			\begin{tablenotes}[para,flushleft]\footnotesize%
+				\item[*]~\(p < 0.05\),
+				\item[**]~\(p < 0.01\),
+				\item[***]~\(p < 0.001\).
+			\end{tablenotes}
+		\end{threeparttable}%
+	\end{table}
+
+	\lipsum[1]
+
+\section{Conclusion}
+
+	\lipsum[1-5]

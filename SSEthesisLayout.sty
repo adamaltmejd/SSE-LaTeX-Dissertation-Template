@@ -1,0 +1,268 @@
+ %%%% file SSE_thesis.sty
+ \NeedsTeXFormat{LaTeX2e}
+ \ProvidesPackage{SSEThesisLayout}[2018/02/14 v0.01 SSE Thesis]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Paper size
+% With trims (extra 3 mm on each size)
+% \setstocksize{248mm}{171mm}
+% \settrimmedsize{242mm}{165mm}{*}
+% \settrims{3mm}{3mm} % {top}{foredge}
+
+% Without trims
+\setstocksize{242mm}{165mm}
+\settrimmedsize{242mm}{165mm}{*}
+\settrims{0pt}{0pt}
+
+\setlrmarginsandblock{20mm}{17.5mm}{*} % left right margins
+\setulmarginsandblock{24mm}{27mm}{*} % top bottom margins
+\setheadfoot{\onelineskip}{2\onelineskip} % {headheight}{footskip}
+\setheaderspaces{15mm}{*}{*} % {headdrop}{headsep}{ratio}
+
+%%%%%%%%%%%%%%%%%%
+% Spacing
+% Paragraph Indent
+\setlength{\parindent}{2em} % indentation for new paragraphs
+% Line spacing
+\setSingleSpace{1.1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dealing with widows and orphans
+\clubpenalty=9996
+\widowpenalty=9999
+\brokenpenalty=4991
+\predisplaypenalty=10000
+\postdisplaypenalty=1549
+\displaywidowpenalty=1602
+
+%%%%%%%%%%%%%%%%
+% PAGE Breaking
+%\flushbottom % to stretch vboxes to cover full page
+% (but won't always work when we have figures)
+% Instead we can use the following:
+\raggedbottom % allow textheight to vary somewhat between pages
+\feetatbottom % to ensure footnotes are still at bottom with \raggedbottom
+
+% Allowing the bottom to extend to avoid widows/orphans (WARNING, uneven lower margin)
+%\setlength{\topskip}{1.6\topskip}
+%\checkandfixthelayout
+%\sloppybottom
+
+% Since we use raggedbottom we can use fixed, it just sets textheight to the
+\checkandfixthelayout[fixed] % use fixed to ensure margin sizes
+% If we instead want to use flishbottom, we should probably set "lines" instead
+%\checkandfixthelayout[lines]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Using Memoir Chapter styles instead
+\makechapterstyle{ssethesis}{%
+    \renewcommand*{\chaptitlefont}{\sffamily\LARGE}
+    \renewcommand*{\chapnamefont}{\sffamily\huge}
+    \renewcommand*{\chapnumfont}{\chapnamefont}
+    \renewcommand*{\printchaptername}{\centering\chapnamefont \@chapapp}
+    \renewcommand*{\printchapternonum}{\centering\chapnamefont}
+    \setlength{\beforechapskip}{4\onelineskip}
+    \setlength{\midchapskip}{2\onelineskip}
+    \setlength{\afterchapskip}{2\onelineskip}
+}
+\chapterstyle{ssethesis}
+\aliaspagestyle{chapter}{empty}
+%\titleformat{\chapter}[display]{\fontsize{22}{32}\sffamily\centering}{\chaptertitlename\ \thechapter}{36pt}{} % Change the font etc of the chapter titles.
+%\titlespacing*{\chapter}{0pt}{58pt}{36pt} % Change the spacing around the chapter title.
+
+%%%%%%%%%%%%%%%%
+% Abstracts
+\renewcommand{\abstractnamefont}{\sffamily\large} %\small\normalfont\bfseries
+\renewcommand{\abstracttextfont}{\vspace*{-2.5ex}\normalfont\normalsize\noindent\ignorespaces} %\small
+\setlength{\absleftindent}{0pt}
+\setlength{\absrightindent}{0pt}
+\setlength{\absparindent}{0pt}
+\setlength{\absparsep}{0pt}
+\setlength{\abstitleskip}{0pt}
+
+%%%%%%%%%%%%%%%%
+% Section styles
+% negative ensures no indentation after
+\setsecheadstyle{\sffamily\Large\raggedright}
+\setbeforesecskip{-3.5ex plus -1ex minus -0.4ex}
+\setaftersecskip{2ex plus 0.4ex}
+
+\setsubsecheadstyle{\sffamily\large\raggedright}
+\setbeforesubsecskip{-2.8ex plus -1ex minus -0.4ex}
+\setaftersubsecskip{1.3ex plus 0.3ex}
+
+\setsubsubsecheadstyle{\sffamily\normalsize\raggedright}
+\setbeforesubsubsecskip{-2.8ex plus -1ex minus -0.4ex}
+\setaftersubsubsecskip{1.3ex plus 0.3ex}
+
+%%%%%%%%%%%%%%%%
+% Float styles
+\setfloatadjustment{figure}{\centering}
+\setfloatadjustment{table}{\footnotesize\centering}
+
+%%%%%%%%%%%%%%%%%
+% Figure captions
+
+% Alternative 1: Use roman fonts
+% \captionstyle[\centering]{\raggedright} % [short caption]{long caption}
+% \captiondelim{. }
+% \captionnamefont{\footnotesize} %
+% \captiontitlefont{\footnotesize} %
+
+% Alt 2: Linebreak after centered figure name (doesn't work very well)
+% \captionnamefont{\sffamily\normalsize\hfill}
+% \captiondelim{\hfill\hfill}
+% \captionstyle{\\\centerlastline}
+% \captiontitlefont{\rmfamily\footnotesize}
+
+% Alt 3: Use notes below tables and have short titles in SF font
+\captionstyle[\centering]{\raggedright} % [short caption]{long caption}
+\captiondelim{: }
+\captionnamefont{\normalsize\sffamily} % \sffamily
+\captiontitlefont{\normalsize\sffamily} % \sffamily
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PAGE STYLE: HEADERS AND FOOTERS
+% see more here: https://tug.org/pracjourn/2008-2/madsen/madsen.pdf and memoir manual
+
+\makepagestyle{ssethesis}
+\makeevenhead{ssethesis}{\normalfont\sffamily\thepage}{\normalfont\sffamily\scshape\thetitle}{}
+\makeoddhead{ssethesis}{}{\normalfont\sffamily\scshape\leftmark}{\normalfont\sffamily\thepage}
+\makeevenfoot{ssethesis}{}{}{}
+\makeoddfoot{ssethesis}{}{}{}
+
+\makepsmarks{ssethesis}{%
+    \nouppercaseheads % use smallcaps instead of uppercase
+    \createmark      {chapter}  {left} {nonumber}   {\@chapapp\ }{. \ }
+    \createmark      {section}  {right}{nonumber}   {}           {. \ }
+    \createplainmark {toc}      {both}              {\contentsname}
+    \createplainmark {lof}      {both}              {\listfigurename}
+    \createplainmark {lot}      {both}              {\listtablename}
+    \createplainmark {bib}      {both}              {\bibname}
+    \createplainmark {index}    {both}              {\indexname}
+    \createplainmark {glossary} {both}              {\glossaryname}
+}
+\setsecnumdepth{subsection}
+\pagestyle{ssethesis}
+
+% TITLE PAGE
+%\DeclareTextFontCommand{\texttitle}{\sffamily} % Create the font style for the title page.
+
+% FOOT NOTES
+
+% Footnote with no number
+\newcommand\blindfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+% %%%%%%%%
+% % Tables
+
+% Siunitx table setup
+\sisetup{
+	group-digits = integer, % group integers in groups of 3 (not decimals)
+	input-decimal-markers = {.},
+	table-number-alignment = center, %  requires defining pre post spacing
+	input-open-uncertainty = {},
+	input-close-uncertainty = {},
+	table-align-text-pre = false,
+	table-align-text-post = false
+}
+\newsubfloat{figure} % creates figure environment for subfloats (memoir)
+
+%%%%%%%%%%%%%%
+% BIBLIOGRAPHY
+\setlength{\bibitemsep}{0.5\baselineskip} % small space between items in bib
+\DeclareFieldFormat[legislation]{citetitle}{{#1}} % no italics of title of legislation in text
+\DeclareFieldFormat[thesis]{title}{\mkbibitalic{#1}}% italics thesis title in bibliography
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Links
+%\definecolor{myblue}{RGB}{100,110,150}
+\hypersetup{
+    %colorlinks=true,
+    %citecolor=myblue,
+    %filecolor=myblue,
+    %linkcolor=myblue,
+    %linkbordercolor=myblue,
+    %urlcolor=myblue,
+    hidelinks,
+    unicode=true,
+    pdfauthor={\theauthor},
+    pdftitle={\thetitle},
+    bookmarksnumbered=true,
+    bookmarksopen=true,
+    breaklinks=true
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Useful commands
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+\newcommand{\Var}[1]{\mathbb{V}\text{ar}\kern-.2em\left[{#1}\right]}
+\newcommand{\Cov}[1]{\mathbb{C}\text{ov}\kern-.2em\left[{#1}\right]}
+\newcommand{\E}[1]{\mathbb{E}\kern-.2em\left[{#1}\right]}
+\newcommand{\Es}[2]{\mathbb{E}_{{#1}}\kern-.2em\left[{#2}\right]} % Exp operator w. subscript
+\newcommand{\CVar}[2]{\mathbb{V}\text{ar}\kern-.2em\left[{#1}\middle\vert{#2}\right]}
+\newcommand{\CCov}[2]{\mathbb{C}\text{ov}\kern-.2em\left[{#1}\middle\vert{#2}\right]}
+\newcommand{\CE}[2]{\mathbb{E}\kern-.2em\left[{#1}\middle\vert{#2}\right]} % conditional expectations
+\newcommand{\plim}{\mathrm{plim}}
+%\newcommand{\Pr}[1]{\mathbb{P}\left({#1}\right)} % already defined
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+% To add a note below the figure use \figurenotes{}
+\newcommand{\figurenotes}[1]{%
+\captionstyle[\centering]{} % \raggedright
+\captiontitlefont{\footnotesize\rmfamily}
+\legend{Notes: #1}}
+
+% Special bibliography with sloppy linebreaks, in toc etc
+\newcommand{\SSEprintbibliography}[1]{%
+\begingroup%
+\hbadness=10000
+\setlength{\emergencystretch}{10em}% amoung of sloppyness to allow
+\printbibliography[heading=#1]%
+\endgroup%
+}
+
+% Special new section heading that looks like a new unnumbered chapter but shows
+% up as section in the TOC
+\newcommand{\SSEfakechapter}[2]{%
+\chapter*{#1~#2}%
+\addcontentsline{toc}{section}{\numberline{#1}#2}
+\refstepcounter{section}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Wierd stuff from Marcus version
+
+% QUOTES
+% Adjust the font size and line spacing for "quote".
+% \let\oldquote\quote
+% \renewcommand{\quote}{
+%   \oldquote
+%   \changefontsizes[15pt]{11pt}
+% }
+% % Adjust the font size and line spacing for "quotation".
+% \let\oldquotation\quotation
+% \renewcommand{\quotation}{
+%   \oldquotation
+%   \changefontsizes[15pt]{11pt}
+% }
+
+% HYPOTHESES ETCETERA
+% Here you can add your own "types" as well, using the same structure.
+% \makeatletter
+% \newtheoremstyle{indent}{18pt}{18pt}{\addtolength{\@totalleftmargin}{0.75cm}\addtolength{\linewidth}{-0.75cm}\parshape 1 0.75cm \linewidth}
+% {}{\bfseries}{:}{0.5em}{}
+% \makeatother
+% \theoremstyle{indent}
+% \newtheorem{hyp}{Hypothesis} % Create Hypothesis
+% \newtheorem{prf}{Proof} % Create Proof
+% \newtheorem{thm}{Theorem} % Create Theorem
+% \newtheorem{lemma}{Lemma} % Create Lemma

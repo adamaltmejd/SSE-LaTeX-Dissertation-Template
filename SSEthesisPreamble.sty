@@ -1,0 +1,91 @@
+ %%%% file ssethesis_preamble.sty
+ \NeedsTeXFormat{LaTeX2e}
+ \ProvidesPackage{SSEThesisPreamble}[2018/02/14 v0.01 SSE Thesis Preamble]
+
+% ####################### Encoding, etc ########################################
+
+% PDFLATEX
+\RequirePackage[T1]{fontenc} % Should be loaded before inputenc
+\RequirePackage[utf8]{inputenc} %utf8x should be avoided, does not work with biblatex
+\RequirePackage[protrusion=true,expansion=true,final,babel]{microtype} % Better looking text
+\RequirePackage[babel]{csquotes} % Better looking quotes
+\RequirePackage{babel} % Language control
+
+% FONTS
+% Garamond font for text and math
+\RequirePackage{garamondx}
+\RequirePackage[garamondx,cmbraces]{newtxmath}
+\RequirePackage{avant} % Avant Gothic for headings/captions
+
+\RequirePackage{lipsum} % to add filler text to template. Can remove.
+
+\RequirePackage{graphicx}
+%\RequirePackage{geometry}
+\RequirePackage{rotating} % sidewaystable
+\RequirePackage{booktabs} % Better looking tables
+\RequirePackage{multirow} % Tables spanning multiple rows
+\RequirePackage{longtable}
+\RequirePackage{textcomp} % for symbols, e.g. copyright
+
+% Nicer looking tables
+\RequirePackage{siunitx}
+\RequirePackage{threeparttable}
+
+\RequirePackage[flushmargin,hang]{footmisc} % This package allows for changes of the foot notes.
+%\RequirePackage{caption} % to edit figure captions (works badly w. memoir)
+%\RequirePackage{titlesec} % This package allow us to change the headers. (should use memoir builtin instead)
+\RequirePackage{scrextend} % Allows setting exact font sizes
+
+% Including papers using \include
+%\RequirePackage{standalone}
+%\RequirePackage{import}
+
+% ###################### MATH ##################################################
+\RequirePackage{amsmath}
+\RequirePackage{amssymb,amsfonts,mathrsfs,accents} % pdflatex
+%\RequirePackage[]{unicode-math} % xelatex
+
+% ###################### GRAPHICS ##############################################
+\RequirePackage{tikz,pgfplots}
+\usetikzlibrary{backgrounds,
+                trees,
+                positioning,
+                arrows,
+                calc,
+                shapes.geometric,
+                arrows,
+                positioning,
+                fit,
+                decorations.pathreplacing,
+                calc}
+\pgfplotsset{compat=newest}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg,.eps}
+\RequirePackage[section]{placeins} % Creates \FloatBarrier at every new section.
+
+% ###################### Bibliography ##########################################
+\RequirePackage[
+            backend=biber,
+            style=authoryear-comp,
+            natbib=true,
+            sortlocale=en_US,
+            giveninits=true,            % Use initials for first and middle names
+            uniquename=false,
+            maxcitenames=2,
+            mincitenames=1,
+            maxbibnames=4,
+            minbibnames=1,
+            dashed=false,                % Will output dash instead of repeated author
+            useprefix=true,             % print "von" etc (biber only)
+            sorting=nyt,                % sort bibliography after name-year-title
+            sortcites=true,             % sort citations in text (when sep. by ",")
+            doi=false,
+            url=false,
+            isbn=false,
+            eprint=false,
+            date=year,
+]{biblatex}
+
+% ###################### HYPERREF (Loaded last) ################################
+\RequirePackage{hyperref}
+
+
