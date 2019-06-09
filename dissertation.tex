@@ -133,17 +133,17 @@ Stockholm School of Economics & Department of Economics\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CHAPTER 1
 \begin{refsection}
-\chapter{Title of Chapter 1}
-{\large\centering\theauthor\par\vspace*{2\onelineskip}} % Author
-\begin{abstract}\input{chapters/chapter1/abstract}\end{abstract}%
-\blindfootnote{Who am I grateful to?}%
-\include{chapters/chapter1/mainmatter} % include puts clearpages around automatically
-\begin{subappendices}
-	% "fake" new chapter to get the unnumbered chapter style for appendix (also does a cleardoublepage)
-	\SSEfakechapter{1.A}{Appendix}%
-	\input{chapters/chapter1/appendix} % need to use input to not clearpage
-	\SSEfakechapter{1.B}{References}\SSEprintbibliography{none}
-\end{subappendices}
+	\chapter{Title of Chapter 1}
+	{\large\centering\theauthor\par\vspace*{2\onelineskip}} % Author
+	\begin{abstract}\input{chapters/chapter1/abstract}\end{abstract}%
+	\blindfootnote{Who am I grateful to?}%
+	\include{chapters/chapter1/mainmatter} % include puts clearpages around automatically
+	\begin{subappendices}
+		% "fake" new chapter to get the unnumbered chapter style for appendix (also does a cleardoublepage)
+		\SSEfakechapter{1.A}{Appendix}%
+		\input{chapters/chapter1/appendix} % need to use input to not clearpage
+		\SSEfakechapter{1.B}{References}\SSEprintbibliography{none}
+	\end{subappendices}
 \end{refsection}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
