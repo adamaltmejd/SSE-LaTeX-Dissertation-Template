@@ -126,8 +126,8 @@
 % see more here: https://tug.org/pracjourn/2008-2/madsen/madsen.pdf and memoir manual
 
 \makepagestyle{ssethesis}
-\makeevenhead{ssethesis}{\normalfont\sffamily\thepage}{\normalfont\sffamily\scshape\thetitle}{}
-\makeoddhead{ssethesis}{}{\normalfont\sffamily\scshape\leftmark}{\normalfont\sffamily\thepage}
+\makeevenhead{ssethesis}{\small\lsstyle\MakeUppercase{\thepage}}{\small\lsstyle\MakeUppercase{\thetitle}}{}
+\makeoddhead{ssethesis}{}{\small\lsstyle\MakeUppercase{\leftmark}}{\small\MakeUppercase\lsstyle\thepage}
 \makeevenfoot{ssethesis}{}{}{}
 \makeoddfoot{ssethesis}{}{}{}
 
