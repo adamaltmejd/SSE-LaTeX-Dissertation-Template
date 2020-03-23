@@ -128,11 +128,11 @@
 % see more here: https://tug.org/pracjourn/2008-2/madsen/madsen.pdf and memoir manual
 
 \makepagestyle{ssethesis}
-% Chose what you like:
-% Serif font in caps (as in Word-template)
+% Alternative 1: Serif font (as in Word template)
 % \makeevenhead{ssethesis}{\small\lsstyle\MakeUppercase{\thepage}}{\small\lsstyle\MakeUppercase{\thetitle}}{}
 % \makeoddhead{ssethesis}{}{\small\lsstyle\MakeUppercase{\leftmark}}{\small\MakeUppercase\lsstyle\thepage}
-% Sans-serif font in smallcaps
+
+% Alternative 2: Sans-serif font
 \makeevenhead{ssethesis}{\normalfont\lsstyle\sffamily\thepage}{\normalfont\lsstyle\sffamily\MakeUppercase{\thetitle}}{}
 \makeoddhead{ssethesis}{}{\normalfont\lsstyle\sffamily\MakeUppercase{\leftmark}}{\normalfont\lsstyle\sffamily\thepage}
 
