@@ -7,7 +7,7 @@
 % PDFLATEX
 \RequirePackage[T1]{fontenc} % Should be loaded before inputenc
 \RequirePackage[utf8]{inputenc} %utf8x should be avoided, does not work with biblatex
-\RequirePackage[protrusion=true,expansion=true,final,babel,letterspace=75]{microtype} % Better looking text
+\RequirePackage[tracking=true,protrusion=true,expansion=true,final,babel,letterspace=75]{microtype} % Better looking text
 \RequirePackage[babel]{csquotes} % Better looking quotes
 \RequirePackage{babel} % Language control
 
@@ -20,7 +20,6 @@
 \RequirePackage{lipsum} % to add filler text to template. Can remove.
 
 \RequirePackage{graphicx}
-%\RequirePackage{geometry}
 \RequirePackage{rotating} % sidewaystable
 \RequirePackage{booktabs} % Better looking tables
 \RequirePackage{multirow} % Tables spanning multiple rows
@@ -32,9 +31,6 @@
 \RequirePackage{threeparttable}
 
 \RequirePackage[flushmargin,hang]{footmisc} % This package allows for changes of the foot notes.
-%\RequirePackage{caption} % to edit figure captions (works badly w. memoir)
-%\RequirePackage{titlesec} % This package allow us to change the headers. (should use memoir builtin instead)
-\RequirePackage{scrextend} % Allows setting exact font sizes
 
 % Including papers using \include
 %\RequirePackage{standalone}
@@ -43,7 +39,6 @@
 % ###################### MATH ##################################################
 \RequirePackage{amsmath}
 \RequirePackage{amsfonts,mathrsfs} % pdflatex
-%\RequirePackage[]{unicode-math} % xelatex
 
 % ###################### GRAPHICS ##############################################
 \RequirePackage{tikz,pgfplots}

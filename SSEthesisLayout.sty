@@ -67,8 +67,6 @@
 }
 \chapterstyle{ssethesis}
 \aliaspagestyle{chapter}{empty}
-%\titleformat{\chapter}[display]{\fontsize{22}{32}\sffamily\centering}{\chaptertitlename\ \thechapter}{36pt}{} % Change the font etc of the chapter titles.
-%\titlespacing*{\chapter}{0pt}{58pt}{36pt} % Change the spacing around the chapter title.
 
 %%%%%%%%%%%%%%%%
 % Abstracts
@@ -84,9 +82,7 @@
 % Section styles
 
 % end section numbers with period
-\makeatletter
-\renewcommand{\@seccntformat}[1]{\csname the#1\endcsname.\quad}
-\makeatother
+\setsecnumformat{\csname the#1\endcsname.\quad}
 
 % negative ensures no indentation after
 \setsecheadstyle{\sffamily\Large\raggedright}
@@ -132,8 +128,14 @@
 % see more here: https://tug.org/pracjourn/2008-2/madsen/madsen.pdf and memoir manual
 
 \makepagestyle{ssethesis}
-\makeevenhead{ssethesis}{\small\lsstyle\MakeUppercase{\thepage}}{\small\lsstyle\MakeUppercase{\thetitle}}{}
-\makeoddhead{ssethesis}{}{\small\lsstyle\MakeUppercase{\leftmark}}{\small\MakeUppercase\lsstyle\thepage}
+% Chose what you like:
+% Serif font in caps (as in Word-template)
+% \makeevenhead{ssethesis}{\small\lsstyle\MakeUppercase{\thepage}}{\small\lsstyle\MakeUppercase{\thetitle}}{}
+% \makeoddhead{ssethesis}{}{\small\lsstyle\MakeUppercase{\leftmark}}{\small\MakeUppercase\lsstyle\thepage}
+% Sans-serif font in smallcaps
+\makeevenhead{ssethesis}{\normalfont\lsstyle\sffamily\thepage}{\normalfont\lsstyle\sffamily\MakeUppercase{\thetitle}}{}
+\makeoddhead{ssethesis}{}{\normalfont\lsstyle\sffamily\MakeUppercase{\leftmark}}{\normalfont\lsstyle\sffamily\thepage}
+
 \makeevenfoot{ssethesis}{}{}{}
 \makeoddfoot{ssethesis}{}{}{}
 
@@ -243,32 +245,3 @@
 \addcontentsline{toc}{section}{\numberline{#1}#2}
 \refstepcounter{section}
 }
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Wierd stuff from Marcus version
-
-% QUOTES
-% Adjust the font size and line spacing for "quote".
-% \let\oldquote\quote
-% \renewcommand{\quote}{
-%   \oldquote
-%   \changefontsizes[15pt]{11pt}
-% }
-% % Adjust the font size and line spacing for "quotation".
-% \let\oldquotation\quotation
-% \renewcommand{\quotation}{
-%   \oldquotation
-%   \changefontsizes[15pt]{11pt}
-% }
-
-% HYPOTHESES ETCETERA
-% Here you can add your own "types" as well, using the same structure.
-% \makeatletter
-% \newtheoremstyle{indent}{18pt}{18pt}{\addtolength{\@totalleftmargin}{0.75cm}\addtolength{\linewidth}{-0.75cm}\parshape 1 0.75cm \linewidth}
-% {}{\bfseries}{:}{0.5em}{}
-% \makeatother
-% \theoremstyle{indent}
-% \newtheorem{hyp}{Hypothesis} % Create Hypothesis
-% \newtheorem{prf}{Proof} % Create Proof
-% \newtheorem{thm}{Theorem} % Create Theorem
-% \newtheorem{lemma}{Lemma} % Create Lemma
