@@ -82,6 +82,12 @@
 
 %%%%%%%%%%%%%%%%
 % Section styles
+
+% end section numbers with period
+\makeatletter
+\renewcommand{\@seccntformat}[1]{\csname the#1\endcsname.\quad}
+\makeatother
+
 % negative ensures no indentation after
 \setsecheadstyle{\sffamily\Large\raggedright}
 \setbeforesecskip{-3.5ex plus -1ex minus -0.4ex}
@@ -117,7 +123,7 @@
 
 % Alt 3: Use notes below tables and have short titles in SF font
 \captionstyle[\centering]{\raggedright} % [short caption]{long caption}
-\captiondelim{: }
+\captiondelim{. }
 \captionnamefont{\normalsize\sffamily} % \sffamily
 \captiontitlefont{\normalsize\sffamily} % \sffamily
 
@@ -126,8 +132,8 @@
 % see more here: https://tug.org/pracjourn/2008-2/madsen/madsen.pdf and memoir manual
 
 \makepagestyle{ssethesis}
-\makeevenhead{ssethesis}{\normalfont\sffamily\thepage}{\normalfont\sffamily\scshape\thetitle}{}
-\makeoddhead{ssethesis}{}{\normalfont\sffamily\scshape\leftmark}{\normalfont\sffamily\thepage}
+\makeevenhead{ssethesis}{\small\lsstyle\MakeUppercase{\thepage}}{\small\lsstyle\MakeUppercase{\thetitle}}{}
+\makeoddhead{ssethesis}{}{\small\lsstyle\MakeUppercase{\leftmark}}{\small\MakeUppercase\lsstyle\thepage}
 \makeevenfoot{ssethesis}{}{}{}
 \makeoddfoot{ssethesis}{}{}{}
 
