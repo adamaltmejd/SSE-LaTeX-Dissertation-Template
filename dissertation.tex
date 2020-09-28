@@ -130,32 +130,33 @@ Stockholm School of Economics & Department of Economics\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CHAPTER 1
 \begin{refsection}
-	\chapter{Title of Chapter 1}
+	\chapter[Title of Chapter~1]{Title of Chapter~1: the subtitle is extremely long whereby the title must be shortened to fit in the Table of Contents and header} % The optional argument provides a shortened version of the title for the ToC and header
+	% \chaptermark{Header title of Chapter~1} % Shorter version of the title for the header only
 	{\large\centering\theauthor\par\vspace*{2\onelineskip}} % Author
 	\begin{abstract}\input{chapters/chapter1/abstract}\end{abstract}%
 	\blindfootnote{Who am I grateful to?}%
 	\include{chapters/chapter1/mainmatter} % include puts clearpages around automatically
 	\begin{subappendices}
 		% "fake" new chapter to get the unnumbered chapter style for appendix (also does a cleardoublepage)
-		\SSEfakechapter{1.A}{Appendix}%
+		\SSEfakechapter{\thechapter.A}{Appendix}%
 		\input{chapters/chapter1/appendix} % need to use input to not clearpage
-		\SSEfakechapter{1.B}{References}\SSEprintbibliography{none}
+		\SSEfakechapter{\thechapter.B}{References}\SSEprintbibliography{none}
 	\end{subappendices}
 \end{refsection}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CHAPTER 2
 \begin{refsection}
-	\chapter{Title of Chapter 2}
+	\chapter{Title of Chapter~2}
 	{\large\centering\theauthor\par\vspace*{2\onelineskip}} % Author
 	\begin{abstract}\input{chapters/chapter2/abstract}\end{abstract}%
 	\blindfootnote{Who am I grateful to?}%
 	\include{chapters/chapter2/mainmatter} % include puts clearpages around automatically
 	\begin{subappendices}
 		% "fake" new chapter to get the unnumbered chapter style for appendix (also does a cleardoublepage)
-		\SSEfakechapter{1.A}{Appendix}%
+		\SSEfakechapter{\thechapter.A}{Appendix}%
 		\input{chapters/chapter2/appendix} % need to use input to not clearpage
-		\SSEfakechapter{1.B}{References}\SSEprintbibliography{none}
+		\SSEfakechapter{\thechapter.B}{References}\SSEprintbibliography{none}
 	\end{subappendices}
 	\end{refsection}
 
